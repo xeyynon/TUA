@@ -50,7 +50,7 @@ class AboutUsScreen extends StatelessWidget {
               SizedBox(height: 30),
               Center(
                 child: Text(
-                  "© Ministry of Road Transport & Highways",
+                  "",
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey,
