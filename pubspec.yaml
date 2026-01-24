@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  supabase_flutter: ^2.0.0
+  vector_math: ^2.1.4
+
   cupertino_icons: ^1.0.8
   google_maps_flutter: ^2.6.0
   geolocator: ^10.1.0
@@ -27,4 +30,9 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/icons/nflowiq.png
+    - assets/icons/nflowiqinv.png
+
     - assets/icons/flowiq.png
+    - assets/icons/flowiqinv.png
+    - assets/icons/nlogoflow.png

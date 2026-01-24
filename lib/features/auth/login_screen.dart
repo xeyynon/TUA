@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
               // FLOWIQ LOGO
               // =========================
               Image.asset(
-                'assets/icons/flowiq.png',
+                'assets/icons/nflowiq.png',
                 height: 90,
               ),
 

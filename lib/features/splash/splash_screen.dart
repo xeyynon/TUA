@@ -9,60 +9,52 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
 
-    // Animation controller
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
-
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-
-    _controller.forward();
-
-    // Navigate to Login after delay
-    Future.delayed(const Duration(seconds: 3), () {
+    // ⏳ Simulate loading
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(context, AppRoutes.login);
     });
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: const Color.fromARGB(255, 10, 109, 223),
       body: Center(
-        child: ScaleTransition(
-          scale: _animation,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // LOGO (replace with Image.asset later)
-              Icon(Icons.traffic, size: 90, color: AppColors.primaryBlue),
-              const SizedBox(height: 16),
-              Text(
-                "Smart Traffic",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.blackPearl,
-                ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // =========================
+            // FLOWIQ LOGO
+            // =========================
+            Image.asset(
+              'assets/icons/nlogoflow.png',
+              height: 110,
+            ),
+
+            const SizedBox(height: 20),
+
+            // =========================
+            // APP NAME
+            // =========================
+            const SizedBox(height: 6),
+
+            // =========================
+            // OPTIONAL TAGLINE
+            // =========================
+            const Text(
+              "Smart Traffic & Road Intelligence",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.white70,
+                letterSpacing: 0.5,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
