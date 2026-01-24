@@ -74,42 +74,55 @@ class _MapScreenState extends State<MapScreen> {
   // ===============================
   Widget _mainContent() {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _fromToBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
-              child: GoogleMap(
-                onMapCreated: (c) => _mapController = c,
-                initialCameraPosition: CameraPosition(
-                  target: _currentLocation ?? const LatLng(28.6139, 77.2090),
-                  zoom: 14,
-                ),
-                myLocationEnabled: true,
-                myLocationButtonEnabled: true,
-                trafficEnabled: true,
+      child: Column(
+        children: [
+          _fromToBar(),
+
+          // ================= MAP =================
+          Expanded(
+            flex: 5,
+            child: GoogleMap(
+              onMapCreated: (c) => _mapController = c,
+              initialCameraPosition: CameraPosition(
+                target: _currentLocation ?? const LatLng(28.6139, 77.2090),
+                zoom: 14,
+              ),
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
+              trafficEnabled: true,
+              compassEnabled: true,
+              zoomControlsEnabled: false,
+            ),
+          ),
+
+          // ================= CHALLANS =================
+          Expanded(
+            flex: 4,
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(top: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _challanTabs(),
+                  const SizedBox(height: 12),
+                  if (openedSection != null)
+                    Container(
+                      margin: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      child: openedSection == "active"
+                          ? _activeChallanList()
+                          : _pastChallanList(),
+                    ),
+                ],
               ),
             ),
-            const SizedBox(height: 12),
-            _challanTabs(),
-            const SizedBox(height: 12),
-            if (openedSection != null)
-              Container(
-                margin: const EdgeInsets.all(12),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade300),
-                ),
-                child: openedSection == "active"
-                    ? _activeChallanList()
-                    : _pastChallanList(),
-              ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
