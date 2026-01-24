@@ -11,7 +11,7 @@ class TrafficApp extends StatelessWidget {
       title: 'AI Traffic Management',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.splash,
       routes: AppRoutes.routes,
     );
   }
