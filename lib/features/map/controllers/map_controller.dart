@@ -14,6 +14,8 @@ class MapController extends ChangeNotifier {
 
   final Set<Marker> markers = {};
   final Set<Polyline> polylines = {};
+  List<Map<String, String>> fromSuggestions = [];
+  List<Map<String, String>> toSuggestions = [];
 
   String? openedSection; // active | past
   bool showPaymentSheet = false;
@@ -40,6 +42,16 @@ class MapController extends ChangeNotifier {
 
   void closePayment() {
     showPaymentSheet = false;
+    notifyListeners();
+  }
+
+  void setFromSuggestions(List<Map<String, String>> list) {
+    fromSuggestions = list;
+    notifyListeners();
+  }
+
+  void setToSuggestions(List<Map<String, String>> list) {
+    toSuggestions = list;
     notifyListeners();
   }
 }
