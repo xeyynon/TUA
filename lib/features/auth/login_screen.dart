@@ -9,56 +9,98 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.traffic, size: 80, color: AppColors.primaryBlue),
-            const SizedBox(height: 20),
+      resizeToAvoidBottomInset: true, // ✅ important
+      body: SafeArea(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 60),
 
-            const Text(
-              "Welcome Back",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-
-            const SizedBox(height: 30),
-
-            TextField(
-              decoration: InputDecoration(
-                labelText: "Email / Phone",
-                border: OutlineInputBorder(),
+              // =========================
+              // FLOWIQ LOGO
+              // =========================
+              Image.asset(
+                'assets/icons/flowiq.png',
+                height: 90,
               ),
-            ),
-            const SizedBox(height: 16),
 
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 24),
+              const SizedBox(height: 16),
 
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryBlue,
-                ),
-                onPressed: () {
-                  // Dummy login → go to Home
-                  Navigator.pushReplacementNamed(context, AppRoutes.home);
-                },
-                child: const Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white),
+              // =========================
+              // APP NAME
+              // =========================
+              const Text(
+                "FlowIQ",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 1.2,
                 ),
               ),
-            ),
-          ],
+
+              const SizedBox(height: 40),
+
+              // =========================
+              // EMAIL / PHONE
+              // =========================
+              const TextField(
+                decoration: InputDecoration(
+                  labelText: "Email / Phone",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              // =========================
+              // PASSWORD
+              // =========================
+              const TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: "Password",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+
+              const SizedBox(height: 28),
+
+              // =========================
+              // LOGIN BUTTON
+              // =========================
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      AppRoutes.home,
+                    );
+                  },
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );

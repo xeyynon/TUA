@@ -66,26 +66,32 @@ class DrawerMenu extends StatelessWidget {
           ),
 
           // =========================
-          // ABOUT US (PLACEHOLDER)
+          // ABOUT US
           // =========================
           ListTile(
             leading: const Icon(Icons.info),
             title: const Text("About Us"),
             onTap: () {
               Navigator.pop(context);
-              // later: Navigator.pushNamed(context, AppRoutes.about);
+              Navigator.pushNamed(
+                context,
+                AppRoutes.aboutUs,
+              );
             },
           ),
 
           // =========================
-          // DISCLAIMER (PLACEHOLDER)
+          // DISCLAIMER
           // =========================
           ListTile(
             leading: const Icon(Icons.warning),
             title: const Text("Disclaimer"),
             onTap: () {
               Navigator.pop(context);
-              // later: Navigator.pushNamed(context, AppRoutes.disclaimer);
+              Navigator.pushNamed(
+                context,
+                AppRoutes.disclaimer,
+              );
             },
           ),
 

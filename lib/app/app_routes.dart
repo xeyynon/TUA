@@ -7,6 +7,8 @@ import '../features/home/home_screen.dart';
 import '../features/map/map_screen.dart';
 import '../features/support/report_issue.dart';
 import '../features/profile/driving_license_screen.dart';
+import '../features/support/about_us.dart';
+import '../features/support/disclaimer.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -15,6 +17,8 @@ class AppRoutes {
   static const String map = '/map';
   static const String reportIssue = '/report-issue';
   static const String drivingLicense = '/driving-license';
+  static const String aboutUs = '/about-us';
+  static const String disclaimer = '/disclaimer';
 
   static Map<String, WidgetBuilder> routes = {
     splash: (context) => const SplashScreen(),
@@ -23,5 +27,7 @@ class AppRoutes {
     map: (context) => const MapScreen(),
     reportIssue: (context) => const ReportIssueScreen(),
     drivingLicense: (context) => const DrivingLicenseScreen(),
+    aboutUs: (context) => const AboutUsScreen(),
+    disclaimer: (context) => const DisclaimerScreen(),
   };
 }
